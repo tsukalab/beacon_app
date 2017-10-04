@@ -20,6 +20,7 @@ import org.altbeacon.beacon.Region;
 
 public class MyActivity extends Activity implements BeaconConsumer {
 
+    
     private BeaconManager beaconManager;
 
     // iBeaconのデータを認識するためのParserフォーマット
