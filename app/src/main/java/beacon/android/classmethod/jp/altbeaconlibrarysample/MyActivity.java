@@ -24,9 +24,8 @@ public class MyActivity extends Activity implements BeaconConsumer {
     private BeaconManager beaconManager;
 
     // iBeaconのデータを認識するためのParserフォーマット
-    public static final String IBEACON_FORMAT = "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24";
+    public static final String IBEACON_FORMAT = "m:2-3=0215,i:b9407f30-f5f8-466e-aff9-25556b57fe6d,i:73832,i:52222,p:24-24";
 
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +39,15 @@ public class MyActivity extends Activity implements BeaconConsumer {
         // staticメソッドで取得
         beaconManager = BeaconManager.getInstanceForApplication(this);
 
+        Boolean hoge=false;
         // BeaconParseを設定
-        beaconManager.getBeaconParsers()
-                .add(new BeaconParser().setBeaconLayout(IBEACON_FORMAT));
+        try {
+            hoge = beaconManager.getBeaconParsers()
+                    .add(new BeaconParser().setBeaconLayout(IBEACON_FORMAT));
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(hoge);
     }
 
     @Override
